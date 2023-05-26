@@ -2,6 +2,6 @@
 
 class AlbumsController < ApplicationController
   def index
-    @galleries = Album.includes(:photos).all
+    @albums = Album.includes(:photos).all
   end
 end

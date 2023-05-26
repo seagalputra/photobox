@@ -1,3 +1,9 @@
-.grid.grid-cols-3.max-w-lg.justify-center.m-auto
-  - @galleries.each do |gallery|
-    .border.border-slate-200= gallery.title
+%h1{class: 'text-3xl font-bold text-gray-400 mt-8 ml-20'} Your Albums
+.grid.grid-cols-3.place-items-center.mt-10
+  - @albums.each do |album|
+    .cursor-pointer
+      .grid.w-full.place-items-center.stack
+        - album.photos.take(3).each_with_index do |photo, index|
+          %img{class: "border-8 border-white w-[300px] h-[300px] object-cover rounded-lg #{index > 0 ? randomize_rotation : 'z-10'}", src: photo&.url, alt: photo&.title}
+      %p.text-gray-600.mt-6.text-center.font-semibold.text-md= album.title
+      %p.text-gray-400.text-center.text-sm.mt-1= "#{album.photos.size} photos"
