@@ -1,0 +1,8 @@
+.flex.flex-col.gap-3.mt-8.ml-20
+  %h1{class: 'text-3xl font-bold text-gray-500'}= @album.title
+  -# TODO: place the album description in table
+  %p.text-sm.text-gray-400 This is collections of cat photos that taken with Photobox App
+
+.grid.grid-cols-4.gap-2.place-items-center.mt-10.ml-10
+  - @album.photos.each do |photo|
+    %img{class: "border-8 border-white w-[300px] h-[300px] object-cover rounded-lg shadow-lg", src: photo&.url, alt: photo&.title}
