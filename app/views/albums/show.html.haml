@@ -5,4 +5,4 @@
 
 .grid.grid-cols-4.gap-2.place-items-center.mt-10.ml-10
   - @album.photos.each do |photo|
-    %img{class: "border-8 border-white w-[300px] h-[300px] object-cover rounded-lg shadow-lg", src: photo&.url, alt: photo&.title}
+    %img{class: "border-8 border-white bg-white w-[300px] h-[300px] object-contain rounded-lg shadow-lg", src: photo&.url, alt: photo&.title}

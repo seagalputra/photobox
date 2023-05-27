@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
+  include Pagy::Backend
+
   def index
-    @albums = Album.includes(:photos).all
+    @pagy, @albums = pagy(Album.includes(:photos).all)
   end
 
   def show

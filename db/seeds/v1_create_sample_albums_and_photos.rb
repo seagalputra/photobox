@@ -4,17 +4,21 @@
 
 puts 'Seeding sample album and photos data...'
 
+# search 8 cat images using Unsplash API
+cats = Unsplash::Photo.search('cats').take(8)
+cat_urls = cats.map(&:track_download)
+
 albums = [
   {
     title: 'My First Album',
     photos: [
       {
         title: 'Photo #1',
-        url: Faker::LoremFlickr.image(size: '500x500')
+        url: cat_urls[0]
       },
       {
         title: 'Photo #2',
-        url: Faker::LoremFlickr.image(size: '500x500')
+        url: cat_urls[1]
       }
     ]
   },
@@ -23,15 +27,15 @@ albums = [
     photos: [
       {
         title: 'Photo #1',
-        url: Faker::LoremFlickr.image(size: '500x500')
+        url: cat_urls[2]
       },
       {
         title: 'Photo #2',
-        url: Faker::LoremFlickr.image(size: '1280x800')
+        url: cat_urls[3]
       },
       {
         title: 'Photo #3',
-        url: Faker::LoremFlickr.image(size: '1280x800')
+        url: cat_urls[4]
       }
     ]
   },
@@ -40,19 +44,23 @@ albums = [
     photos: [
       {
         title: 'Photo #1',
-        url: Faker::LoremFlickr.image(size: '500x500')
+        url: cat_urls[5]
       },
       {
         title: 'Photo #2',
-        url: Faker::LoremFlickr.image(size: '1366x768')
+        url: cat_urls[6]
       },
       {
         title: 'Photo #3',
-        url: Faker::LoremFlickr.image(size: '960x640')
+        url: cat_urls[7]
       }
     ]
   }
 ]
+
+album_titles = albums.map { |album| album[:title] }
+old_albums = Album.where(title: album_titles)
+old_albums.destroy_all unless old_albums.empty?
 
 albums.each do |al|
   album = Album.new(title: al[:title])
