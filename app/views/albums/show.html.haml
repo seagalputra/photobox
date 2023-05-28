@@ -3,6 +3,11 @@
   -# TODO: place the album description in table
   %p.text-sm.text-gray-400 This is collections of cat photos that taken with Photobox App
 
-.grid.grid-cols-4.gap-2.place-items-center.mt-10.ml-10
+.grid.grid-cols-4.gap-2.place-items-center.mt-10.ml-10{data: { controller: 'photos', 'photos-selected-class': "outline" }}
   - @album.photos.each do |photo|
-    %img{class: "border-8 border-white bg-white w-[300px] h-[300px] object-contain rounded-lg shadow-lg", src: photo&.url, alt: photo&.title}
+    .grid.cursor-pointer.rounded-lg.outline-blue-500{data: { id: photo.id }}
+      %button.relative.flex.justify-center.items-center.border.border-slate-200.rounded-sm.mr-4.mt-4.p-2.w-4.h-4.bg-white.z-20.justify-self-end{data: { action: 'photos#select' }, style: 'grid-area: 1 / 1;'}
+        %svg#check-icon.w-3.h-3.absolute.text-white.pointer-events-none.hidden{:fill => "none", :stroke => "currentColor", "stroke-width" => "4", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+          %path{:d => "M4.5 12.75l6 6 9-13.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %a{href: album_photo_path(album_id: @album.id, id: photo.id), style: 'grid-area: 1 / 1;'}
+        %img{class: "border-8 border-white bg-white w-fit h-[250px] rounded-lg shadow-lg", src: photo&.url, alt: photo&.title}
