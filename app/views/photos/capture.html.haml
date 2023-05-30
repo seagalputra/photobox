@@ -4,10 +4,10 @@
       %path{:d => "M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
 
 - if mobile_phone?
-  %div{class: 'flex flex-col justify-center items-center h-[calc(100vh-72px)]'}
-    %input{id: 'camera', type: 'file', accept: 'image/*;capture=camera', class: 'hidden'}
-    %label{for: 'camera', class: 'flex flex-col justify-center items-center font-medium'}
-      = image_tag("camera.png")
+  = form_with html: { class: 'flex flex-col justify-center items-center h-[calc(100vh-72px)]' } do |form|
+    = form.file_field :camera, class: 'hidden', accept: 'image/*;capture=camera'
+    = form.label :camera, class: 'flex flex-col justify-center items-center font-medium text-gray-600' do
+      = image_tag("camera.png", class: 'w-56')
       Click to open your camera
 - else
   %div{class: 'flex flex-col justify-center items-center h-[calc(100vh-72px)] gap-6'}

@@ -64,7 +64,12 @@ old_albums.destroy_all unless old_albums.empty?
 
 albums.each do |al|
   album = Album.new(title: al[:title])
-  album.photos.create(al[:photos]) if album.save
+
+  al[:photos].each do |photo|
+    album.grab_images(url: photo[:url], title: photo[:title])
+  end
+
+  album.save
 end
 
 puts 'Seeding album and photo data finished!'

@@ -10,4 +10,4 @@
         %svg#check-icon.w-3.h-3.absolute.text-white.pointer-events-none.hidden{:fill => "none", :stroke => "currentColor", "stroke-width" => "4", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
           %path{:d => "M4.5 12.75l6 6 9-13.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
       %a{href: photo_path(photo.id), style: 'grid-area: 1 / 1;'}
-        %img{class: "border-8 border-white bg-white w-fit h-[250px] rounded-lg shadow-lg", src: photo&.url, alt: photo&.title}
+        %img{class: "border-8 border-white bg-white w-fit h-[250px] rounded-lg shadow-lg", src: rails_storage_proxy_path(photo), alt: photo&.filename&.to_s}

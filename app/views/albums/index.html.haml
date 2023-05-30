@@ -12,6 +12,6 @@
         %a.cursor-pointer{href: album_path(album.id)}
           .grid.w-full.place-items-center.stack
             - album.photos.take(3).each_with_index do |photo, index|
-              %img{class: "border-8 border-white bg-white h-[250px] w-fit object-contain rounded-lg transition-transform #{index > 0 ? randomize_rotation : 'z-10 shadow-sm hover:rotate-6'}", src: photo&.url, alt: photo&.title}
+              %img{class: "border-8 border-white bg-white h-[250px] w-fit object-contain rounded-lg transition-transform #{index > 0 ? randomize_rotation : 'z-10 shadow-sm hover:rotate-6'}", src: rails_storage_proxy_path(photo), alt: photo&.filename&.to_s}
           %p.text-gray-600.mt-6.text-center.font-semibold.text-md= album.title
           %p.text-gray-400.text-center.text-sm.mt-1= "#{album.photos.size} photos"

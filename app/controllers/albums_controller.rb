@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
   include Pagy::Backend
 
   def index
-    @pagy, @albums = pagy(Album.includes(:photos).all)
+    @pagy, @albums = pagy(Album.all)
   end
 
   def show

@@ -8,6 +8,7 @@ gem 'bootsnap', require: false
 gem 'faker'
 gem 'haml-rails'
 gem 'html2haml'
+gem "image_processing", ">= 1.2"
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pagy', '~> 6.0'
@@ -27,12 +28,12 @@ group :development, :test do
 end
 
 group :development do
+  gem 'awesome_print'
   gem 'rubocop', require: false
   gem 'rubocop-capybara'
   gem 'rubocop-rails'
   gem 'solargraph'
   gem 'web-console'
-  gem 'awesome_print'
 end
 
 group :test do
