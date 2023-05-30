@@ -8,11 +8,11 @@ gem 'bootsnap', require: false
 gem 'faker'
 gem 'haml-rails'
 gem 'html2haml'
-gem "image_processing", ">= 1.2"
+gem 'image_processing', '>= 1.2'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pagy', '~> 6.0'
-gem 'puma', '~> 5.0'
+gem 'passenger', '>= 5.3.2', require: 'phusion_passenger/rack_handler'
 gem 'rails', '~> 7.0.5'
 gem 'redis', '~> 4.0'
 gem 'sprockets-rails'

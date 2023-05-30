@@ -186,9 +186,10 @@ GEM
     parallel (1.23.0)
     parser (3.2.2.1)
       ast (~> 2.4.1)
+    passenger (6.0.17)
+      rack
+      rake (>= 0.8.1)
     public_suffix (5.0.1)
-    puma (5.6.5)
-      nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.7)
     rack-test (2.1.0)
@@ -340,7 +341,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   pagy (~> 6.0)
-  puma (~> 5.0)
+  passenger (>= 5.3.2)
   rails (~> 7.0.5)
   redis (~> 4.0)
   rubocop
