@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   root 'albums#index'
 
-  resources :albums, only: %i[index show] do
+  get 'photos/capture', to: 'photos#capture'
+
+  resources :albums, shallow: true do
     resources :photos
   end
 end

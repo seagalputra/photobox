@@ -9,5 +9,5 @@
       %button.relative.flex.justify-center.items-center.border.border-slate-200.rounded-sm.mr-4.mt-4.p-2.w-4.h-4.bg-white.z-20.justify-self-end{data: { action: 'photos#select' }, style: 'grid-area: 1 / 1;'}
         %svg#check-icon.w-3.h-3.absolute.text-white.pointer-events-none.hidden{:fill => "none", :stroke => "currentColor", "stroke-width" => "4", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
           %path{:d => "M4.5 12.75l6 6 9-13.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
-      %a{href: album_photo_path(album_id: @album.id, id: photo.id), style: 'grid-area: 1 / 1;'}
+      %a{href: photo_path(photo.id), style: 'grid-area: 1 / 1;'}
         %img{class: "border-8 border-white bg-white w-fit h-[250px] rounded-lg shadow-lg", src: photo&.url, alt: photo&.title}
