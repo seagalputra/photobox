@@ -11,6 +11,7 @@ cat_urls = cats.map(&:track_download)
 albums = [
   {
     title: 'My First Album',
+    description: 'This is my first album that created in Photobox',
     photos: [
       {
         title: 'Photo #1',
@@ -24,6 +25,7 @@ albums = [
   },
   {
     title: 'Second Album',
+    description: 'Photobox app is totally fun, you must try it!',
     photos: [
       {
         title: 'Photo #1',
@@ -41,6 +43,7 @@ albums = [
   },
   {
     title: '#3 Album',
+    description: 'My cats collection is really cute!',
     photos: [
       {
         title: 'Photo #1',
@@ -63,7 +66,7 @@ old_albums = Album.where(title: album_titles)
 old_albums.destroy_all unless old_albums.empty?
 
 albums.each do |al|
-  album = Album.new(title: al[:title])
+  album = Album.new(title: al[:title], description: al[:description])
 
   al[:photos].each do |photo|
     album.grab_images(url: photo[:url], title: photo[:title])

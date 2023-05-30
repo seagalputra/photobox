@@ -8,6 +8,6 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @album = Album.find(params[:id])
+    @album = Album.find_by(slug: params[:slug])
   end
 end

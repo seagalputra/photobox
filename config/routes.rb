@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'photos/capture', to: 'photos#capture'
   post 'photos', to: 'photos#create'
 
-  resources :albums, shallow: true do
+  resources :albums, param: :slug, shallow: true do
     resources :photos
   end
 end

@@ -9,7 +9,7 @@
   - else
     .grid.grid-cols-3.place-items-center.gap-y-10.mb-64
       - @albums.each do |album|
-        %a.cursor-pointer{href: album_path(album.id)}
+        %a.cursor-pointer{href: album_path(album.slug)}
           .grid.w-full.place-items-center.stack
             - album.photos.take(3).each_with_index do |photo, index|
               %img{class: "border-8 border-white bg-white h-[250px] w-[250px] object-contain rounded-lg transition-transform #{index > 0 ? randomize_rotation : 'z-10 shadow-md hover:rotate-6'}", src: rails_storage_proxy_path(photo), alt: photo&.filename&.to_s}
