@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static classes = ["selected"];
+  static targets = ["photo"];
 
   select(event) {
     const button = event.currentTarget;
@@ -13,5 +14,11 @@ export default class extends Controller {
     );
     photoContainer.classList.toggle(this.selectedClass);
     checkIcon.classList.toggle("hidden");
+  }
+
+  upload(event) {
+    if (this.element.nodeName.toLowerCase() === "form") {
+      this.element.submit();
+    }
   }
 }
