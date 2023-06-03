@@ -23,3 +23,11 @@ body {
   text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.8);
   @apply bg-clip-text;
 }
+
+.text-inner-shadow {
+  @apply bg-gray-500;
+  @apply font-bold;
+  @apply text-transparent;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.8);
+  @apply bg-clip-text;
+}
