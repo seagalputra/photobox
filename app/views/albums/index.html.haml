@@ -1,26 +1,21 @@
 .flex.flex-col.items-center.gap-4
   %h1{class: "title"} Photobox
-  %h2.text-lg.font-semibold.text-gray-500 Take, collect, and share your memories instantly from your camera
+  %h2.text-lg.font-semibold.text-gray-400 Take, collect, and share your memories instantly from your camera
 
 .flex.flex-col.gap-8.mt-24{ data: { controller: 'albums' }}
-  %h3{class: 'text-3xl font-bold text-gray-500 mx-32'} Your Albums
-  - if @albums.size < 1
-    = render 'empty'
-  - else
-    .grid.grid-cols-3.place-items-center.gap-y-10.mb-64
-      - @albums.each do |album|
-        %a.cursor-pointer{href: album_path(album.slug)}
-          .grid.w-full.place-items-center.stack
-            - album.photos.take(3).each_with_index do |photo, index|
-              %img{class: "border-8 border-white bg-white h-[250px] w-[250px] object-contain rounded-lg transition-transform #{index > 0 ? randomize_rotation : 'z-10 shadow-md hover:rotate-6'}", src: rails_storage_proxy_path(photo), alt: photo&.filename&.to_s}
-          %p.text-gray-600.mt-6.text-center.font-semibold.text-md= album.title
-          %p.text-gray-400.text-center.text-sm.mt-1
-            - if album.photos.size > 1
-              = "#{album.photos.size} photos"
-            - else
-              = "#{album.photos.size} photo"
-      
-      %button{data: { action: 'albums#openCreateAlbumModal' }, class: 'flex flex-col items-center justify-center gap-1 h-[250px] w-[250px] border-4 border-gray-300 border-dashed self-start rounded-lg text-gray-400'}
-        %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
-          %path{:d => "M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
-        Create new album
+  .grid.grid-cols-3.place-items-center.gap-x-32.gap-y-16.mb-64.w-fit.mx-auto
+    - @albums.each do |album|
+      %a.cursor-pointer{href: album_path(album.slug), tabindex: 0}
+        .grid.w-full.place-items-center.stack
+          - album.photos.take(3).each_with_index do |photo, index|
+            %img{class: "border-8 border-white bg-white h-[250px] w-[250px] object-contain rounded-lg transition-transform #{index > 0 ? randomize_rotation : 'z-10 shadow-md hover:rotate-6'}", src: rails_storage_proxy_path(photo), alt: photo&.filename&.to_s}
+        %p.text-gray-600.mt-6.text-center.font-semibold.text-md= album.title
+        %p.text-gray-400.text-center.text-sm.mt-1
+          = album.total_photos
+    
+    %button{data: { action: 'albums#openCreateAlbumModal' }, tabindex: 0, class: 'flex flex-col items-center justify-center gap-1 h-[250px] w-[250px] border-4 border-gray-300 border-dashed self-start rounded-lg text-gray-400'}
+      %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      Create new album
+
+= render 'create_album_modal'

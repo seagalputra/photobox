@@ -1,0 +1,19 @@
+%div{id: 'create-album-modal', 'aria-hidden': 'true', class: 'bg-black/10 backdrop-blur w-full h-full fixed z-20 top-0 left-0 transition aria-hidden:invisible aria-hidden:opacity-0 aria-hidden:pointer-events-none', data: { controller: 'albums', action: 'keydown.esc->albums#closeCreateAlbumModal', 'albums-error-class': 'ring ring-red-400' }}
+  %div{class: 'flex flex-col mx-auto bg-white rounded-lg w-[540px] max-w-[1440px] mt-32 z-30'}
+    %div{class: 'flex justify-between items-center p-8'}
+      %p.font-bold.text-2xl.text-neutral-800 Create Album
+      %button{data: { action: 'albums#closeCreateAlbumModal' }}
+        %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+          %path{:d => "M6 18L18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+
+    = form_with model: @album, html: { class: 'flex flex-col px-8 pb-5 gap-4' }, data: { action: 'submit->albums#createAlbum' } do |form|
+      %div.flex.flex-col.gap-2
+        = form.text_field :title, class: 'rounded-md shadow-sm bg-gray-50 placeholder:text-md placeholder:text-gray-400 border-gray-300 focus:border-neutral-900 focus:ring-neutral-900', placeholder: 'Title'
+        %p#title_error.text-xs.text-red-500.hidden
+      %div.flex.flex-col
+        = form.text_area :description, size: '70x5', class: 'rounded-md shadow-sm bg-gray-50 placeholder:text-md placeholder:text-gray-400 border-gray-300 focus:border-neutral-900 focus:ring-neutral-900', placeholder: 'Description'
+        %p#description_error.text-xs.text-red-500.hidden
+      = form.submit 'Submit', class: 'bg-neutral-900 text-white w-full p-3 text-md rounded-md cursor-pointer transition hover:bg-neutral-800 font-semibold'
+
+    %p{class: 'px-16 pb-8 text-xs text-gray-500 text-center' } By procedding, you agree to give Photobox access to your photo or information that related to the album creation.
+

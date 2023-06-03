@@ -14,7 +14,7 @@ body {
 }
 
 .title {
-  @apply bg-gray-900;
+  @apply bg-gray-500;
   @apply text-8xl;
   @apply mt-24;
   @apply mx-20;
