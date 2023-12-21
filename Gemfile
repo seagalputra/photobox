@@ -42,3 +42,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem "litestack", "~> 0.4.2"
