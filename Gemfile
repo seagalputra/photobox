@@ -35,6 +35,10 @@ group :development do
   gem 'rubocop-rails'
   gem 'solargraph'
   gem 'web-console'
+  gem "capistrano", "~> 3.17", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
 end
 
 group :test do
@@ -44,3 +48,5 @@ group :test do
 end
 
 gem "litestack", "~> 0.4.2"
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
